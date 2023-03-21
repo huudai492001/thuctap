@@ -13,7 +13,6 @@
             <th>Category Name</th>
             <th>Price</th>
             <th>Image</th>
-
             <th>Action</th>
 
         </tr>
