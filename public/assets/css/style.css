@@ -187,7 +187,7 @@ body {
 
 .search label ion-icon {
   position: absolute;
-  top: 0;
+  top: 10px;
   left: 10px;
   font-size: 1.2rem;
 }

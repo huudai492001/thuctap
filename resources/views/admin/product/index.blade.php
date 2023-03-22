@@ -5,6 +5,11 @@
             {{\Illuminate\Support\Facades\Session::get('success')}}
         </div>
     @endif
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2" ><a href="#" class="btn btn-primary float-end ">Add Product</a></div>
+
+    </div>
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
@@ -14,7 +19,6 @@
             <th>Price</th>
             <th>Image</th>
             <th>Action</th>
-
         </tr>
         </thead>
 {{--        <tbody>--}}

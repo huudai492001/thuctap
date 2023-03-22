@@ -28,20 +28,20 @@
         </li>
 
         <li>
-            <a href="#">
+            <a href="{{route('category.index')}}">
                         <span class="icon">
-                            <ion-icon name="chatbubble-outline"></ion-icon>
+                            <ion-icon name="file-tray-full-outline"></ion-icon>
                         </span>
-                <span class="title">Messages</span>
+                <span class="title">Category Manager</span>
             </a>
         </li>
 
         <li>
-            <a href="#">
+            <a href="{{route('product.index')}}">
                         <span class="icon">
-                            <ion-icon name="help-outline"></ion-icon>
+                            <ion-icon name="list-outline"></ion-icon>
                         </span>
-                <span class="title">Help</span>
+                <span class="title">Product Manager</span>
             </a>
         </li>
 

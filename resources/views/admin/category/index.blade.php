@@ -5,7 +5,14 @@
             {{\Illuminate\Support\Facades\Session::get('success')}}
         </div>
     @endif
-    <a href="#" class="btn btn-primary"> Add Category</a>
+    <div class="row">
+        <div class="col-md-10">
+
+        </div>
+        <div class="col-md-2 ">
+            <a href="{{route('category.create')}}" class="btn btn-primary btn-sm float-end"> Add Category</a>
+            </div>
+    </div>
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
@@ -16,43 +23,62 @@
             <th>Action</th>
         </tr>
         </thead>
-        {{--        <tbody>--}}
-        {{--        @php--}}
-        {{--            $i = 1--}}
-        {{--        @endphp--}}
-        {{--        @foreach($products as $product)--}}
-        {{--            <tr>--}}
-        {{--                <td>{{$i++}}</td>--}}
-        {{--                <td>{{$product->name}}</td>--}}
-        {{--                <td>--}}
-        {{--                    @if($product->category_id)--}}
-        {{--                        {{$product->category->name}}--}}
-        {{--                    @endif--}}
-        {{--                </td>--}}
-        {{--                <td>{{$product->price}}</td>--}}
+                <tbody>
+                @php
+                    $i = 1
+                @endphp
+                @foreach($categories as $categorie)
+                    <tr>
+                        <td>{{$i++}}</td>
+                        <td>{{$categorie->name}}</td>
+                        <td>
+                            @if($categorie->category_id)
+                                {{$categorie->parent->name}}
+                            @else
+                                No parent id
+                            @endif
+                        </td>
+                        <td>
+                            {{$categorie->created_at}}
+                        </td>
 
-        {{--                <td>--}}
-        {{--                    <img style="height: 80px ; width: 80px" src="{{asset('upload/'.$product->image)}}">--}}
-        {{--                </td>--}}
-        {{--                <td ><button class="btn btn-primary">--}}
-        {{--                        <a style="color:black" href="{{route('details', $product->id)}}">--}}
-        {{--                            Add Detail Product--}}
-        {{--                        </a>--}}
+                        <td>
 
-        {{--                    </button>--}}
-        {{--                </td>--}}
-        {{--                <td>--}}
-        {{--                    <a href="{{route('product.edit', $product->id)}}" style="font-size: 25px; padding: 5px"> <i class="fa fa-edit"></i></a>--}}
-        {{--                    |--}}
-        {{--                    <a href="{{route('product.delete', $product->id)}}" style="font-size: 25px; padding: 5px"> <i class="fa fa-trash"></i></a>--}}
+                            <a href="{{route('category.edit', $categorie->id)}}" style="font-size: 25px; padding: 5px"> <ion-icon name="create-outline"></ion-icon> </a>
 
-        {{--                </td>--}}
-        {{--            </tr>--}}
+                            <a href="{{route('category.destroy', $categorie->id)}}" style="font-size: 25px; padding: 5px"> <ion-icon name="trash-outline"></ion-icon></a>
+{{--                            <a href="javascript:void(0)" style="font-size: 25px; padding: 5px;" data-id="{{$categorie->id}}" class="category_delete" >--}}
+{{--                                <ion-icon name="trash-outline"></ion-icon> </a>--}}
+                        </td>
+                    </tr>
 
-        {{--        @endforeach--}}
-        {{--        </tbody>--}}
+                @endforeach
+                </tbody>
 
 
     </table>
 
 @endsection
+{{--@push('footer-script')--}}
+{{--    <script>--}}
+
+{{--        $('.category_delete').on('click', function (){--}}
+{{--            if(confirm('Are you delete this category')){--}}
+{{--                var id = $(this).data('id');--}}
+{{--                $.ajax({--}}
+{{--                    url: '{{route('category.destroy')}}',--}}
+{{--                    method: 'post',--}}
+{{--                    data:{--}}
+{{--                        _token:"{{csrf_token()}}",--}}
+{{--                        'id':id--}}
+{{--                    },--}}
+{{--                    success:function (data){--}}
+{{--                        location.reload();--}}
+{{--                    }--}}
+
+{{--                })--}}
+{{--            }--}}
+{{--        });--}}
+{{--    </script>--}}
+
+{{--@endpush--}}

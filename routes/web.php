@@ -24,16 +24,23 @@ use App\Http\Controllers\CategoryController;
 Route::get('admin/home', [AdminController::class, 'dashboard'])->name('home');
 
 //Product Controller
-Route::get('product/index', [ProductController::class, 'index'])->name('product.index');
+Route::prefix('product')->group(function (){
+    Route::get('index', [ProductController::class, 'index'])->name('product.index');
+    Route::get('create', [ProductController::class, 'create'])->name('product.create');
+    Route::post('store', [ProductController::class, 'store'])->name('product.store');
+});
+
 
 //Category Controller
 Route::prefix('category')->group(function (){
     Route::get('index', [CategoryController::class, 'index'])->name('category.index');
     Route::get('create',[CategoryController::class, 'create'])->name('category.create');
-
-
+    Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::get('destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 });
 Route::post('category/store',[CategoryController::class, 'store'])->name('category.store');
+Route::post('category/update/{id}',[CategoryController::class, 'update'])->name('category.update');
+
 
 
 

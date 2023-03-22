@@ -9,10 +9,12 @@
     <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+
 {{--    <link id="callCss" rel="stylesheet" href="{{asset('themes/bootshop/bootstrap.min.css')}}" media="screen"/>--}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
     <link href="{{asset('themes/css/base.css')}}" rel="stylesheet" media="screen"/>
+    <link href="{{asset('assets/css/base.css')}}" rel="stylesheet" media="screen"/>
     <!-- Bootstrap style responsive -->
 
     <link href="{{asset('themes/css/bootstrap-responsive.min.css')}}" rel="stylesheet"/>
@@ -43,6 +45,7 @@
 <!-- =============== End SideBar ================ -->
 
 @include('layout.footer')
+@stack('footer-script')
 </body>
 
 </html>
