@@ -1,4 +1,5 @@
 @extends('layout.layout')
+
 @section('content')
     @if(\Illuminate\Support\Facades\Session::has('success'))
         <div class="alert alert-success" role="alert">
@@ -7,10 +8,10 @@
     @endif
     <div class="row">
         <div class="col-md-10"></div>
-        <div class="col-md-2" ><a href="#" class="btn btn-primary float-end ">Add Product</a></div>
+        <div class="col-md-2" ><a href="{{route('product.create')}}" class="btn btn-primary float-end ">Add Product</a></div>
 
     </div>
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered ">
         <thead>
         <tr>
             <th>S.no</th>
@@ -21,41 +22,35 @@
             <th>Action</th>
         </tr>
         </thead>
-{{--        <tbody>--}}
-{{--        @php--}}
-{{--            $i = 1--}}
-{{--        @endphp--}}
-{{--        @foreach($products as $product)--}}
-{{--            <tr>--}}
-{{--                <td>{{$i++}}</td>--}}
-{{--                <td>{{$product->name}}</td>--}}
-{{--                <td>--}}
-{{--                    @if($product->category_id)--}}
-{{--                        {{$product->category->name}}--}}
-{{--                    @endif--}}
-{{--                </td>--}}
-{{--                <td>{{$product->price}}</td>--}}
+        <tbody>
+        @php
+            $i = 1
+        @endphp
+        @foreach($products as $product)
+            <tr>
+                <td>{{$i++}}</td>
+                <td>{{$product->name}}</td>
+                <td>
+                    @if($product->category_id)
+                        {{$product->category->name}}
+                    @endif
+                </td>
+                <td>{{$product->price}}</td>
 
-{{--                <td>--}}
-{{--                    <img style="height: 80px ; width: 80px" src="{{asset('upload/'.$product->image)}}">--}}
-{{--                </td>--}}
-{{--                <td ><button class="btn btn-primary">--}}
-{{--                        <a style="color:black" href="{{route('details', $product->id)}}">--}}
-{{--                            Add Detail Product--}}
-{{--                        </a>--}}
+                <td>
+                    <img style="height: 80px ; width: 80px" src="{{asset('upload/'.$product->image)}}">
+                </td>
 
-{{--                    </button>--}}
-{{--                </td>--}}
-{{--                <td>--}}
-{{--                    <a href="{{route('product.edit', $product->id)}}" style="font-size: 25px; padding: 5px"> <i class="fa fa-edit"></i></a>--}}
-{{--                    |--}}
-{{--                    <a href="{{route('product.delete', $product->id)}}" style="font-size: 25px; padding: 5px"> <i class="fa fa-trash"></i></a>--}}
+                <td>
+                    <a href="{{route('product.edit', $product->id )}}" style="font-size: 25px; padding: 5px"> <ion-icon name="create-outline"></ion-icon> </a>
 
-{{--                </td>--}}
-{{--            </tr>--}}
+                    <a href="" style="font-size: 25px; padding: 5px"> <ion-icon name="trash-outline"></ion-icon></a>
 
-{{--        @endforeach--}}
-{{--        </tbody>--}}
+                </td>
+            </tr>
+
+        @endforeach
+        </tbody>
 
 
     </table>
